@@ -1,4 +1,4 @@
-# 🛒 SmartCore
+#  SmartCore
 
 > A full-stack e-commerce and delivery management platform built with the MERN stack.
 
@@ -8,7 +8,7 @@ The project is currently **under active development** and has **not been deploye
 
 ---
 
-## 🚧 Project Status
+##  Project Status
 
 **Status: In Development**
 
@@ -18,9 +18,9 @@ Deployment will be added once the application reaches a stable release.
 
 ---
 
-## ✨ Features
+##  Features
 
-### 👤 Authentication & User Management
+###  Authentication & User Management
 
 * User registration and login
 * Account verification
@@ -32,7 +32,7 @@ Deployment will be added once the application reaches a stable release.
 * Role-based authorization
 * Secure authentication using cookies/tokens
 
-### 🛍️ Products & Inventory
+###  Products & Inventory
 
 * Product management
 * Product categories
@@ -42,7 +42,7 @@ Deployment will be added once the application reaches a stable release.
 * Inventory tracking
 * Admin product management
 
-### 🛒 Orders
+###  Orders
 
 * Customer order creation
 * Order management
@@ -52,7 +52,7 @@ Deployment will be added once the application reaches a stable release.
 * Delivery workflow
 * Cash on Delivery (COD) support
 
-### 💳 Payments
+###  Payments
 
 SmartCore is being designed to support multiple payment methods.
 
@@ -66,7 +66,7 @@ Current payment functionality includes work toward:
 
 > Payment integrations are still being developed and tested.
 
-### 📧 Email Services
+###  Email Services
 
 SmartCore uses email functionality for account-related operations such as:
 
@@ -78,13 +78,13 @@ SmartCore uses email functionality for account-related operations such as:
 
 The email functionality is structured so that email providers and templates can be managed independently from the core application logic.
 
-### ☁️ File & Image Management
+###  File & Image Management
 
 Product and user profile images are handled through **Cloudinary**.
 
 The application separates image-upload functionality from the rest of the business logic to make it easier to manage and maintain.
 
-### 👨‍💼 Admin Dashboard
+###  Admin Dashboard
 
 Administrators can manage different aspects of the platform, including:
 
@@ -97,7 +97,7 @@ Administrators can manage different aspects of the platform, including:
 * User accounts
 * Application statistics
 
-### 🚚 Delivery Management
+###  Delivery Management
 
 SmartCore includes functionality for managing delivery operations.
 
@@ -110,7 +110,7 @@ Delivery personnel can:
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 SmartCore follows a layered backend architecture designed to keep business logic separate from HTTP handling and database operations.
 
@@ -149,7 +149,7 @@ The goal of this structure is to keep controllers lightweight while moving reusa
 
 ---
 
-## 🧰 Tech Stack
+##  Tech Stack
 
 ### Frontend
 
@@ -195,7 +195,7 @@ The goal of this structure is to keep controllers lightweight while moving reusa
 
 ---
 
-## 🔐 User Roles
+##  User Roles
 
 SmartCore is designed around different levels of access.
 
@@ -236,7 +236,7 @@ Administrators have elevated permissions to:
 
 ---
 
-## 🔌 API Design
+##  API Design
 
 SmartCore uses a RESTful API architecture.
 
@@ -254,7 +254,7 @@ The API is protected using authentication and role-based authorization where req
 
 ---
 
-## 📦 Installation
+##  Installation
 
 ### Prerequisites
 
@@ -284,7 +284,7 @@ npm install
 
 ---
 
-## ⚙️ Environment Variables
+##  Environment Variables
 
 Create a `.env` file in the project root.
 
@@ -311,7 +311,7 @@ Additional environment variables may be required as more integrations are implem
 
 ---
 
-## ▶️ Running the Application
+##  Running the Application
 
 Start the development server with:
 
@@ -333,7 +333,7 @@ http://localhost:5000
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 API endpoints can be tested during development using tools such as **Postman**.
 
@@ -349,7 +349,7 @@ Testing currently focuses on:
 
 ---
 
-## 🗺️ Roadmap
+##  Roadmap
 
 Planned improvements include:
 
@@ -369,7 +369,7 @@ Planned improvements include:
 
 ---
 
-## 🎯 Project Goals
+##  Project Goals
 
 SmartCore is being developed to provide practical experience with:
 
@@ -387,7 +387,7 @@ SmartCore is being developed to provide practical experience with:
 
 ---
 
-## 📚 What I'm Learning Through SmartCore
+##  What I'm Learning Through SmartCore
 
 This project is more than just an e-commerce application. It is also a practical learning project where I am exploring how to design and build a complete full-stack system.
 
@@ -406,7 +406,7 @@ Some of the concepts I'm working with include:
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 SmartCore is **not currently deployed**.
 
@@ -414,7 +414,7 @@ Deployment will be added after the application reaches a stable development mile
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Simon Mwanzia**
 
@@ -424,7 +424,7 @@ GitHub: https://github.com/mwanzia-simon
 
 ---
 
-## 📄 License
+##  License
 
 This project is currently being developed as a personal project.
 
