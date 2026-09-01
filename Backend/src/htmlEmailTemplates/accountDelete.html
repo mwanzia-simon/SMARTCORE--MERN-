@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Scheduled for Deletion</title>
+</head>
+
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:Arial,Helvetica,sans-serif;color:#333333;">
+  
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f4f4f5;padding:40px 0;">
+    <tr>
+      <td align="center">
+        
+        <table role="presentation" width="320" cellspacing="0" cellpadding="0" style="background:#ffffff;border-radius:12px;overflow:hidden;">
+          
+          <!-- Header -->
+          <tr>
+            <td style="background-color: #111827; padding: 28px 30px; text-align: center;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 28px; letter-spacing: -0.5px;">
+                smart<span style="color: #3b82f6;">Core</span>
+              </h1>
+              <p style="margin: 12px 0 0; color: #cbd5e1; font-size: 14px;">
+                Power Meets Performance
+              </p>
+            </td>
+          </tr>
+          
+          <!-- Body -->
+          <tr>
+            <td style="padding:40px;">
+              
+              <h2 style="margin-top:0;color:#111827;">
+                Hello {{name}},
+              </h2>
+              
+              <p style="font-size:16px;line-height:1.8;color:#4b5563;">
+                We've received your request to delete your SmartCore account.
+              </p>
+              
+              <p style="font-size:16px;line-height:1.8;color:#4b5563;">
+                Your account has now been <strong>scheduled for permanent deletion</strong>. Nothing has been deleted yet, and you still have time to change your mind.
+              </p>
+              
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin:30px 0;background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;">
+                <tr>
+                  <td style="padding:25px;text-align:center;">
+                    
+                    <p style="margin:0;color:#6b7280;font-size:14px;">
+                      Scheduled Deletion Date
+                    </p>
+                    
+                    <h2 style="margin:12px 0;color:#dc2626;font-size:28px;">
+                      {{deletionDate}}
+                    </h2>
+                    
+                    <p style="margin:0;color:#6b7280;font-size:15px;">
+                      {{daysRemaining}} days remaining
+                    </p>
+                    
+                  </td>
+                </tr>
+              </table>
+              
+              <p style="font-size:16px;line-height:1.8;color:#4b5563;">
+                If you wish to continue using SmartCore, simply log in before the scheduled deletion date and reactivate your account. Your orders, profile, and saved information will remain available until then.
+              </p>
+              
+              <!-- <div style="text-align:center;margin:40px 0;">
+<a href="{{reactivateLink}}"
+style="display:inline-block;background:#2563eb;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:16px;font-weight:bold;">
+Reactivate My Account
+</a>
+</div> -->
+              
+              <p style="font-size:15px;line-height:1.8;color:#6b7280;">
+                If you do nothing, your account and personal information will be permanently deleted after the scheduled date. This action cannot be undone.
+              </p>
+              
+              <p style="font-size:15px;line-height:1.8;color:#6b7280;">
+                If you didn't request this deletion, please log in immediately or contact SmartCore Support.
+              </p>
+              
+              <hr style="border:none;border-top:1px solid #e5e7eb;margin:35px 0;">
+              
+              <p style="margin:0;color:#9ca3af;font-size:13px;">
+                Request submitted: <strong>{{requestDate}}</strong><br>
+                Scheduled deletion: <strong>{{deletionDate}}</strong>
+              </p>
+              
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="background:#f9fafb;padding:25px;text-align:center;">
+              
+              <p style="margin:0;color:#6b7280;font-size:14px;">
+                Thank you for using <strong>SmartCore</strong>.
+              </p>
+              
+              <p style="margin-top:10px;color:#9ca3af;font-size:12px;">
+                © {{year}} SmartCore. All rights reserved.
+              </p>
+              
+            </td>
+          </tr>
+          
+        </table>
+        
+      </td>
+    </tr>
+  </table>
+  
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "smartcore-(mern)",
+  "version": "1.0.0",
+  "description": "E-commerce website",
+  "main": "./Backend/src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install --prefix Backend && npm install --prefix Frontend && npm build --prefix Frontend",
+    "start": "npm run start --prefix Backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

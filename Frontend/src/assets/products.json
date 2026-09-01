@@ -1,0 +1,138 @@
+[
+  {
+    "pid": "SCT001",
+    "image": [],
+    "name": "ASUS Zenbook Duo (2025)",
+    "category": "asus",
+    "price": 30345,
+    "offerPrice": 29050,
+    "description": [
+      "Processor Intel Core Ultra 9 285H",
+      "Graphics Intel Arc Graphics",
+      "Display Dual 14-inch 3K OLED Touch Displays",
+      "RAM 32GB",
+      "Storage 2TB SSD",
+      "Operating_system Windows 11 Home"
+    ],
+    "inStock": true
+  },
+  {
+    "pid": "SCT002",
+    "image": [],
+    "name": "ASUS Zenbook A14 OLED",
+    "category": "asus",
+    "price": 19200,
+    "offerPrice": 16000,
+    "description": [
+      "Processor Qualcomm Snapdragon X X1 26-100",
+      "Graphics Integrated",
+      "Display 14-inch WUXGA OLED",
+      "RAM 16GB",
+      "Storage 512GB SSD",
+      "Operating_system Windows 11 Home"
+    ],
+    "inStock": true
+  },
+  {
+    "pid": "SCT003",
+    "image": [],
+    "name": "ASUS ZenBook 14",
+    "category": "asus",
+    "price": 18500,
+    "offerPrice": 15300,
+    "description": [
+      "Processor AMD Ryzen AI 7 350",
+      "Graphics AMD Radeon Graphics",
+      "Display 14-inch 3K OLED 120Hz",
+      "RAM 16GB",
+      "Storage 1TB SSD",
+      "Operating_system Windows 11 Home"
+    ],
+    "inStock": true
+  },
+  {
+    "pid": "SCT004",
+    "image": [],
+    "name": "ASUS Zenbook 14 OLED",
+    "category": "asus",
+    "price": 24500,
+    "offerPrice": 19500,
+    "description": [
+      "Processor Intel Core Ultra 9 285H",
+      "Graphics Intel Arc Graphics",
+      "Display 14-inch 3K OLED Touch Display",
+      "RAM 16GB",
+      "Storage 1TB SSD",
+      "Operating_system Windows 11 Home"
+    ],
+    "inStock": true
+  },
+  {
+    "pid": "SCT005",
+    "image": [],
+    "name": "ROG Zephyrus G16 (2025)",
+    "category": "zephyrus",
+    "price": 45400,
+    "offerPrice": 41400,
+    "description": [
+      "Processor Intel Core Ultra 9 285H",
+      "Graphics NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "Display 16-inch 2.5K WQXGA OLED ROG Nebula Display",
+      "RAM 32GB",
+      "Storage 1TB SSD",
+      "Operating_system Windows 11 Home"
+    ],
+    "inStock": true
+  },
+  {
+    "pid": "SCT006",
+    "image": [],
+    "name": "Lenovo Legion 5",
+    "category": "lenovo",
+    "price": 28000,
+    "offerPrice": 22000,
+    "description": [
+      "Processor Intel Core i7-14650HX",
+      "Graphics NVIDIA GeForce RTX 4060 8GB",
+      "Display 16-inch WQXGA 165Hz",
+      "RAM 16GB",
+      "Storage 1TB SSD",
+      "Operating_system Windows 11 Home"
+    ],
+    "inStock": true
+  },
+  {
+    "pid": "SCT007",
+    "image": [],
+    "name": "Lenovo LOQ 15IRH8",
+    "category": "lenovo",
+    "price": 24500,
+    "offerPrice": 19500,
+    "description": [
+      "Processor Intel Core i7-13620H",
+      "Graphics NVIDIA GeForce RTX 4050 6GB",
+      "Display 15.6-inch FHD 144Hz",
+      "RAM 16GB",
+      "Storage 512GB SSD",
+      "Operating_system Windows 11 Home"
+    ],
+    "inStock": true
+  },
+  {
+    "pid": "SCT008",
+    "image": [],
+    "name": "HP Spectre x360 2-in-1",
+    "category": "hp",
+    "price": 14800,
+    "offerPrice": 12000,
+    "description": [
+      "Processor Intel Core i5-1235U",
+      "Graphics Intel Iris Xe Graphics",
+      "Display 13.5-inch WUXGA+ Touchscreen",
+      "RAM 8GB LPDDR4x",
+      "Storage 512GB PCIe Gen4 SSD",
+      "Operating_system Windows 11 Home"
+    ],
+    "inStock": true
+  }
+]

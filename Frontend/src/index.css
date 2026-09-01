@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  display: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: white;
+  color: white;
+  caret-color: white;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .animate-in {
+    animation-fill-mode: both;
+  }
+  .slide-in-from-top {
+    animation-name: slideInFromTop;
+  }
+  .duration-300 {
+    animation-duration: 300ms;
+  }
+
+  @keyframes slideInFromTop {
+    from {
+      opacity: o;
+      transform: translateY(-4rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
