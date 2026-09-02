@@ -25,6 +25,7 @@ import hero_svg_1 from "./hero_svg_01.svg";
 import hero_svg_2 from "./hero_svg_02.svg";
 import add_address_img from "./add_address.svg";
 import signup_image from "./signup_svg.svg";
+import user_avator from "./user_avator.svg"
 
 const products = [
   {
@@ -313,4 +314,5 @@ export {
   discountImage,
   add_address_img,
   newsletterImage,
+  user_avator
 };

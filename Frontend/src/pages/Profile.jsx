@@ -9,11 +9,12 @@ import {
   CameraIcon,
   Eye,
   EyeOff,
+  Loader2,
 } from "lucide-react";
 import { useAppContext } from "../context/AppContext";
 import { formatDate } from "../lib/utils";
 import { useEffect, useState } from "react";
-import { person_01 } from "../assets/assets";
+import { user_avator } from "../assets/assets";
 import api from "../api/axios";
 import Loader from "../components/Loader";
 import { toast } from "react-toastify";
@@ -33,6 +34,7 @@ const Profile = () => {
   const [showSecurity, setShowSecurity] = useState(false);
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [uploading, setUploading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -77,15 +79,16 @@ const Profile = () => {
 
   const handleUpdateProfile = async (e) => {
     try {
-      setLoading(true);
       e.preventDefault();
+      setUploading(true);
       const { data } = await api.post("/api/user/update-profile", formData);
       data.success ? toast.success(data.message) : toast.error(data.message);
       data.success && getUserData();
     } catch (error) {
       toast.error(error.message);
     } finally {
-      setLoading(false);
+      getUserData()
+      setUploading(false);
     }
   };
 
@@ -228,7 +231,6 @@ const Profile = () => {
                   >
                     {verificationLoading ? "Sending Link ..." : "Verify Email"}
                   </button>
-                
                 </div>
               </div>
             </div>
@@ -240,7 +242,7 @@ const Profile = () => {
           <div className="flex flex-col items-center">
             <div className="relative">
               <img
-                src={selectedImage || person_01}
+                src={user.profilePicture || selectedImage || user_avator}
                 alt="Profile"
                 className="h-24 w-24 rounded-full border-4 border-border-color object-cover"
               />
@@ -262,7 +264,16 @@ const Profile = () => {
               </label>
             </div>
 
-            <h1 className="mt-4 text-2xl font-bold text-primary">
+            {uploading && (
+              <p className="mt-2 text-green-200 flex items-center justify-center gap-2">
+                <span>
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                </span>
+                Uploading Profile Picture
+              </p>
+            )}
+
+            <h1 className="mt-1 text-2xl font-bold text-primary">
               {user.firstName} {user.lastName}
             </h1>
 
@@ -330,7 +341,9 @@ const Profile = () => {
                   required
                 />
               </div>
-              <p className="text-xs mt-1 pl-1 text-muted font-semibold">Email cannot be changed</p>
+              <p className="text-xs mt-1 pl-1 text-muted font-semibold">
+                Email cannot be changed
+              </p>
             </div>
 
             <div>

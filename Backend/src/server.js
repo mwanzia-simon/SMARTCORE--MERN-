@@ -15,7 +15,7 @@ import contactRouter from "./routes/contactRouter.js";
 import locationRouter from "./routes/locationRouter.js";
 import customersRouter from "./routes/CustomersRouter.js";
 import newsletterRouter from "./routes/newsletterRouter.js";
-// import connectCloudinary from "./config/cloudinary.js";
+import connectCloudinary from "./config/cloudinary.js";
 
 const app = express();
 const PORT = process.env.PORT || 5700;
@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
 });
 
 connectDB().then(() => {
-  // connectCloudinary()
+  connectCloudinary()
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });

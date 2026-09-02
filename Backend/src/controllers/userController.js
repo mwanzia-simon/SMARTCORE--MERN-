@@ -1,4 +1,5 @@
 // This returns the user data  if the user is signed in
+import { cloudinary } from "../config/cloudinary.js";
 import Order from "../models/orderModel.js";
 import User from "../models/userModel.js";
 import * as userService from "../services/user/userService.js";
@@ -46,6 +47,15 @@ export const updateProfilePic = async (req, res) => {
       return res.json({ success: false, message: "Account does not exist!" });
 
     // Perform the cloudinary upload
+    const result = await cloudinary.uploader.upload(profilePic, {
+      folder: "smartcore/profile-pictures",
+      resource_type: "image",
+    });
+
+    user.profilePicture = result.secure_url;
+
+    // Saving the user data after the file upload
+    await user.save();
 
     return res.json({
       success: true,
