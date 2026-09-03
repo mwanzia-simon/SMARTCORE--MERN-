@@ -6,7 +6,10 @@ const userSchema = mongoose.Schema(
     lastName: { type: String, required: true, trim: true },
     email: { type: String, required: true, unique: true, trim: true },
     phoneNumber: { type: String, required: true },
-    profilePicture: { type: String, default: "" },
+    profilePicture: {
+      url: { type: String, default: "" },
+      public_id: { type: String, default: "" },
+    },
     password: { type: String, required: true },
     joined: { type: Date, default: Date.now },
     cartItems: { type: Object, default: {} },
