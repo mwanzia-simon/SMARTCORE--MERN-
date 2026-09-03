@@ -23,7 +23,6 @@ const Navbar = () => {
     }
   }, [searchQuery]);
 
-
   return (
     <nav className="flex flex-wrap items-center justify-between gap-y-2 px-4 sm:px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-main relative transition-all">
       <NavLink to="/" onClick={() => setOpen(false)}>
@@ -32,7 +31,6 @@ const Navbar = () => {
           <span className="text-accent">Core</span>
         </h1>
       </NavLink>
-
 
       {/* Desktop Menu */}
       <div className="hidden sm:flex flex-wrap xl:flex-nowrap items-center gap-3 md:gap-4 xl:gap-8 max-w-full text-primary">
@@ -57,7 +55,6 @@ const Navbar = () => {
           <Search className="w-4 h-4" />
         </div>
 
-
         {/* Cart icon */}
         <div
           onClick={() => navigate("/cart")}
@@ -69,12 +66,11 @@ const Navbar = () => {
           </button>
         </div>
 
-
         {/* User icon */}
         {!user ? (
           <button
             onClick={() => {
-              navigate("/login")
+              navigate("/login");
             }}
             className="cursor-pointer text-sm md:text-base px-5 md:px-8 py-1.5 md:py-2 lg:px-7 lg:py-2 bg-accent hover:bg-accent-hover transition text-primary rounded-lg"
           >
@@ -87,7 +83,11 @@ const Navbar = () => {
                 onClick={() => setShowMenu(!showMenu)}
                 className=" w-10 h-10  flex items-center justify-center bg-card rounded-full border border-border-color"
               >
-                <User className="w-14" />
+                {user.profilePicture.url ? (
+                  <img className="w-full h-full object-cover rounded-full" src={user.profilePicture.url} />
+                ) : (
+                  <User className="w-14" />
+                )}
               </button>
 
               <ul
@@ -181,7 +181,7 @@ const Navbar = () => {
             <button
               onClick={() => {
                 setOpen(false);
-                navigate("/login")
+                navigate("/login");
               }}
               className="cursor-pointer px-6 py-2 mt-2 bg-accent hover:bg-accent-hover transition text-white rounded-lg text-sm"
             >
