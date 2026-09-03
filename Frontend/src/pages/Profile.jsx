@@ -80,15 +80,15 @@ const Profile = () => {
   const handleUpdateProfile = async (e) => {
     try {
       e.preventDefault();
-      setUploading(true);
+      setLoading(true);
       const { data } = await api.post("/api/user/update-profile", formData);
       data.success ? toast.success(data.message) : toast.error(data.message);
       data.success && getUserData();
     } catch (error) {
       toast.error(error.message);
     } finally {
-      getUserData()
-      setUploading(false);
+      getUserData();
+      setLoading(false);
     }
   };
 
@@ -196,6 +196,7 @@ const Profile = () => {
       toast.error(error.message);
     } finally {
       setIsUpdatingProfile(false);
+      getUserData();
     }
   };
 
@@ -242,7 +243,7 @@ const Profile = () => {
           <div className="flex flex-col items-center">
             <div className="relative">
               <img
-                src={user.profilePicture.url || selectedImage || user_avator}
+                src={selectedImage || user.profilePicture.url || user_avator}
                 alt="Profile"
                 className="h-24 w-24 rounded-full border-4 border-border-color object-cover"
               />
@@ -264,7 +265,7 @@ const Profile = () => {
               </label>
             </div>
 
-            {uploading && (
+            {isUpdatingProfile && (
               <p className="mt-2 text-green-200 flex items-center justify-center gap-2">
                 <span>
                   <Loader2 className="h-5 w-5 animate-spin" />
