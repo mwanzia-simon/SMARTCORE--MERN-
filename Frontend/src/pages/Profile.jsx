@@ -242,7 +242,7 @@ const Profile = () => {
           <div className="flex flex-col items-center">
             <div className="relative">
               <img
-                src={user.profilePicture || selectedImage || user_avator}
+                src={user.profilePicture.url || selectedImage || user_avator}
                 alt="Profile"
                 className="h-24 w-24 rounded-full border-4 border-border-color object-cover"
               />

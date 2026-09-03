@@ -46,15 +46,20 @@ export const updateProfilePic = async (req, res) => {
     if (!user)
       return res.json({ success: false, message: "Account does not exist!" });
 
-    // Perform the cloudinary upload
+    // Uploading the profile pic to cloudinary
     const result = await cloudinary.uploader.upload(profilePic, {
       folder: "smartcore/profile-pictures",
       resource_type: "image",
     });
 
-    user.profilePicture = result.secure_url;
+    // Deleting any existing profile pics
+    if (user.profilePicture?.public_id) {
+      await cloudinary.uploader.destroy(user.profilePicture.public_id);
+    }
 
-    // Saving the user data after the file upload
+    user.profilePicture.url = result.secure_url;
+    user.profilePicture.public_id = result.public_id;
+
     await user.save();
 
     return res.json({
