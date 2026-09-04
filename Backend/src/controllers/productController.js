@@ -1,11 +1,11 @@
-// A function to add products
-// api/product/add
-
 import { v2 as cloudinary } from "cloudinary";
 import Product from "../models/productModel.js";
+
 export const addProduct = async (req, res) => {
   try {
-    let productData = req.body.productData;
+    let productData = JSON.parse(req.body.productData);
+
+    console.log(productData);
 
     const images = req.files;
 

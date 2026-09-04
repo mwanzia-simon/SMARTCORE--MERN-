@@ -3,6 +3,7 @@ import { categories } from "../../assets/assets";
 import { useAppContext } from "./../../context/AppContext";
 import { toast } from "react-toastify";
 import { FileUpIcon } from "lucide-react";
+import api from "../../api/axios";
 
 const AddProduct = () => {
   const { axios } = useAppContext();
@@ -35,7 +36,9 @@ const AddProduct = () => {
         formData.append("images", files[i]);
       }
 
-      const { data } = await axios.post("/api/product/add", formData);
+      const { data } = await api.post("/api/product/add", formData);
+
+      console.log(data)
 
       if (data.success) {
         toast.success(data.message);
@@ -47,11 +50,7 @@ const AddProduct = () => {
         setFiles([]);
       }
     } catch (error) {
-      if (error.response && error.response.data) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error("Something went wrong");
-      }
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
@@ -91,7 +90,7 @@ const AddProduct = () => {
                     />
                   ) : (
                     <div className="size-24 text-accent rounded cursor-pointer bg-card flex items-center justify-center">
-                        <FileUpIcon className="size-8" />
+                      <FileUpIcon className="size-8" />
                     </div>
                   )}
                 </label>
@@ -99,7 +98,10 @@ const AddProduct = () => {
           </div>
         </div>
         <div className="flex flex-col gap-1 max-w-md">
-          <label className="text-base font-medium text-primary" htmlFor="product-name">
+          <label
+            className="text-base font-medium text-primary"
+            htmlFor="product-name"
+          >
             Product Name
           </label>
           <input
@@ -129,7 +131,10 @@ const AddProduct = () => {
           ></textarea>
         </div>
         <div className="w-full flex flex-col gap-1">
-          <label className="text-base font-medium text-primary" htmlFor="category">
+          <label
+            className="text-base font-medium text-primary"
+            htmlFor="category"
+          >
             Category
           </label>
           <select
@@ -148,7 +153,10 @@ const AddProduct = () => {
         </div>
         <div className="flex items-center gap-5 flex-wrap">
           <div className="flex-1 flex flex-col gap-1 w-32">
-            <label className="text-base font-medium text-primary" htmlFor="product-price">
+            <label
+              className="text-base font-medium text-primary"
+              htmlFor="product-price"
+            >
               Product Price
             </label>
             <input
@@ -162,7 +170,10 @@ const AddProduct = () => {
             />
           </div>
           <div className="flex-1 flex flex-col gap-1 w-32">
-            <label className="text-base font-medium text-primary" htmlFor="offer-price">
+            <label
+              className="text-base font-medium text-primary"
+              htmlFor="offer-price"
+            >
               Offer Price
             </label>
             <input
