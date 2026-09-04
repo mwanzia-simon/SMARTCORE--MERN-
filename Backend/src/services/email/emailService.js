@@ -6,6 +6,7 @@ import { currentYear, formatDate, getTime } from "../../lib/utils.js";
 import { accountVerificationTemplate } from "../../templates/email/accountVerification.js";
 import { newsletterSubscriptionTemplate } from "../../templates/email/newsletterSubscription.js";
 import { accountReactivationTemplate } from "../../templates/email/accountReactivation.js";
+import { orderConfirmationTemplate } from "../../templates/email/orderConfirmation.js";
 
 // sendWelcomeEmail function
 export const sendWelcomeEmail = async ({ user, url }) => {
@@ -82,6 +83,38 @@ export const sendAccountReactivationLink = async (user, link) => {
       name: user.firstName,
       link,
       year: currentYear,
+    }),
+  });
+};
+
+// sendOrderConfirmation function
+export const sendOrderConfirmation = async ({
+  user,
+  productsHTML,
+  deliveryAddress,
+  deliveryFee,
+  estimatedDelivery,
+  orderDate,
+  orderLink,
+  orderNumber,
+  subtotal,
+  total,
+}) => {
+  return sendEmail({
+    to: user.email,
+    subject: "Order confirmation!",
+    html: orderConfirmationTemplate({
+      name: user.firstName,
+      year: currentYear,
+      productsHTML,
+      deliveryAddress,
+      deliveryFee,
+      estimatedDelivery,
+      orderDate,
+      orderLink,
+      orderNumber,
+      subtotal,
+      total,
     }),
   });
 };
