@@ -1,5 +1,6 @@
 // Function to handle COD
 
+import { generateOrderNumber } from "../lib/orderNumber.js";
 import Address from "../models/addressModel.js";
 import Location from "../models/locationModel.js";
 import Order from "../models/orderModel.js";
@@ -30,11 +31,15 @@ export const placeOrderCOD = async (req, res) => {
     // Adding the delivery fee for the specific region
     amount += userRegion.deliveryFee;
 
+    const orderNumber = await generateOrderNumber();
+    console.log(orderNumber);
+
     await Order.create({
       userID,
       items,
       amount,
       address,
+      orderNumber,
       paymentType: "COD",
       isPaid: false,
     });
@@ -81,9 +86,6 @@ export const placeOrderOnline = async (req, res) => {
     return res.json({ success: false, message: error.message });
   }
 };
-
-// Function to get user specific orders
-// /api/order/user
 
 export const getUserOrders = async (req, res) => {
   try {
