@@ -8,14 +8,8 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const {
-    user,
-    logout,
-    setShowUserLogin,
-    searchQuery,
-    setSearchQuery,
-    getCartCount,
-  } = useAppContext();
+  const { user, logout, searchQuery, setSearchQuery, getCartCount } =
+    useAppContext();
 
   useEffect(() => {
     if (searchQuery.length > 0) {
@@ -84,7 +78,10 @@ const Navbar = () => {
                 className=" w-10 h-10  flex items-center justify-center bg-card rounded-full border border-border-color"
               >
                 {user.profilePicture.url ? (
-                  <img className="w-full h-full object-cover rounded-full" src={user.profilePicture.url} />
+                  <img
+                    className="w-full h-full object-cover rounded-full"
+                    src={user.profilePicture.url}
+                  />
                 ) : (
                   <User className="w-14" />
                 )}

@@ -6,14 +6,14 @@ import {
   productById,
   productList,
 } from "../controllers/productController.js";
-// import { upload } from "../config/multer.js";
+import { upload } from "../config/multer.js";
 import { adminAuth } from "../middleware/adminAuth.js";
 
 const productRouter = express.Router();
 
-productRouter;
-//   .route("/add")
-//   .post(upload.array(["images"]), adminAuth, addProduct);
+productRouter
+  .route("/add")
+  .post(upload.array(["images"]), adminAuth, addProduct);
 productRouter.route("/list").get(productList);
 productRouter.route("/id").get(productById);
 productRouter.route("/stock/:id").post(adminAuth, changeStock);

@@ -1,7 +1,7 @@
 // A function to add products
 // api/product/add
 
-// import { v2 as cloudinary } from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 import Product from "../models/productModel.js";
 export const addProduct = async (req, res) => {
   try {
@@ -9,16 +9,17 @@ export const addProduct = async (req, res) => {
 
     const images = req.files;
 
-    // let imagesUrl = await Promise.all(
-    //   images.map(async (item) => {
-    //     let result = await cloudinary.uploader.upload(item.path, {
-    //       resource_type: "image",
-    //     });
-    //     return result.secure_url;
-    //   }),
-    // );
+    let imagesUrl = await Promise.all(
+      images.map(async (item) => {
+        let result = await cloudinary.uploader.upload(item.path, {
+          resource_type: "image",
+          folder: "smartcore/products",
+        });
+        return result.secure_url;
+      }),
+    );
 
-    // await Product.create({ ...productData, image: imagesUrl });
+    await Product.create({ ...productData, image: imagesUrl });
     return res.json({ success: true, message: "Product added succesifully!" });
   } catch (error) {
     return res.json({ success: false, message: error.message });
@@ -60,7 +61,6 @@ export const changeStock = async (req, res) => {
   }
 };
 
-
 // Fucntion to delete a product
 export const deleteProduct = async (req, res) => {
   try {
@@ -68,10 +68,8 @@ export const deleteProduct = async (req, res) => {
 
     await Product.findByIdAndDelete(id);
 
-    res.json({ success: true, message:"Product deleted succesifully!" });
+    res.json({ success: true, message: "Product deleted succesifully!" });
   } catch (error) {
     return res.json({ success: false, message: error.message });
   }
 };
-
-

@@ -1,4 +1,4 @@
-// import multer from "multer"
+import multer from "multer"
 
-// export const upload = multer({storage:multer.diskStorage({})})
+export const upload = multer({storage:multer.diskStorage({})})
 
