@@ -6,13 +6,21 @@ import Location from "../models/locationModel.js";
 import Order from "../models/orderModel.js";
 import Product from "../models/productModel.js";
 import User from "../models/userModel.js";
+import { formatDate } from "../lib/utils.js";
 
 import * as paymentService from "../services/payment/paymentService.js";
+import * as emailService from "../services/email/emailService.js";
 
 export const placeOrderCOD = async (req, res) => {
   try {
     const userID = req.userID;
     const { items, address } = req.body;
+
+    const user = await User.findById(userID);
+
+    if (!user) {
+      return res.json({ success: false, message: "Account does not exist!" });
+    }
 
     const userAddress = await Address.findById(address);
     const userRegion = await Location.findOne({ region: userAddress.region });
@@ -32,9 +40,8 @@ export const placeOrderCOD = async (req, res) => {
     amount += userRegion.deliveryFee;
 
     const orderNumber = await generateOrderNumber();
-    console.log(orderNumber);
 
-    await Order.create({
+    const newOrder = await Order.create({
       userID,
       items,
       amount,
@@ -42,6 +49,54 @@ export const placeOrderCOD = async (req, res) => {
       orderNumber,
       paymentType: "COD",
       isPaid: false,
+    });
+
+    const customerOrder = await Order.findById(newOrder._id).populate(
+      "items.product",
+    );
+
+    let productsHTML;
+
+    const structuredOrder = customerOrder.items.map(
+      (item) =>
+        (productsHTML += `
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #e5e7eb; padding-bottom: 18px; margin-bottom: 18px;">     
+                <tr>
+                  <td width="85" valign="top">
+                    <img src="${item.product.image}" alt="${item.product.name}" width="70" height="70" style="display: block; object-fit: cover; border-radius: 8px;" />
+                  </td>   
+                  <td valign="top">
+                    <p style="margin: 0 0 6px; color: #111827; font-size: 15px; font-weight: bold;">
+                      ${item.product.name}
+                    </p>
+                    <p style="margin: 0; color: #6b7280; font-size: 13px;">
+                      Quantity: ${item.quantity}
+                    </p>   
+                  </td>  
+                  <td align="right" valign="top" style="color: #111827; font-size: 15px; font-weight: bold;">
+                    KSh ${item.product.offerPrice}
+                  </td> 
+                </tr>
+       </table>
+    
+    `),
+    );
+
+    const subtotal = amount - userRegion.deliveryFee;
+
+    const deliveryAddress = `${userAddress.firstName} ${userAddress.lastName} ${userAddress.region} ${userAddress.city}`;
+
+    await emailService.sendOrderConfirmation({
+      user,
+      deliveryFee: userRegion.deliveryFee,
+      orderLink: `${process.env.CLIENT_URL}/my-orders`,
+      total: amount,
+      estimatedDelivery: userRegion.days,
+      orderNumber: newOrder.orderNumber,
+      deliveryAddress,
+      orderDate: formatDate(new Date(Date.now())),
+      productsHTML,
+      subtotal,
     });
 
     return res.json({ success: true, message: "Order placed succesifully!" });

@@ -120,33 +120,7 @@ export const orderConfirmationTemplate = ({
               </h3>
               
               <!-- Product 1 -->
-              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #e5e7eb; padding-bottom: 18px; margin-bottom: 18px;">
-                
-                <tr>
-                  
-                  <td width="85" valign="top">
-                    <img src="{{productImage}}" alt="{{productName}}" width="70" height="70" style="display: block; object-fit: cover; border-radius: 8px;" />
-                  </td>
-                  
-                  <td valign="top">
-                    
-                    <p style="margin: 0 0 6px; color: #111827; font-size: 15px; font-weight: bold;">
-                      {{productName}}
-                    </p>
-                    
-                    <p style="margin: 0; color: #6b7280; font-size: 13px;">
-                      Quantity: {{quantity}}
-                    </p>
-                    
-                  </td>
-                  
-                  <td align="right" valign="top" style="color: #111827; font-size: 15px; font-weight: bold;">
-                    KSh {{productPrice}}
-                  </td>
-                  
-                </tr>
-                
-              </table>
+            ${productsHTML}
               
               <!-- Repeat the product block for additional products -->
               
