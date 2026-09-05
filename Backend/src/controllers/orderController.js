@@ -55,7 +55,7 @@ export const placeOrderCOD = async (req, res) => {
       "items.product",
     );
 
-    let productsHTML;
+    let productsHTML = "";
 
     const structuredOrder = customerOrder.items.map(
       (item) =>
@@ -63,7 +63,7 @@ export const placeOrderCOD = async (req, res) => {
       <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #e5e7eb; padding-bottom: 18px; margin-bottom: 18px;">     
                 <tr>
                   <td width="85" valign="top">
-                    <img src="${item.product.image}" alt="${item.product.name}" width="70" height="70" style="display: block; object-fit: cover; border-radius: 8px;" />
+                    <img src="${item.product.image}" alt="${item.product.name}" width="70" height="70" style="display: block; object-fit: contain; border-radius: 8px;" />
                   </td>   
                   <td valign="top">
                     <p style="margin: 0 0 6px; color: #111827; font-size: 15px; font-weight: bold;">
@@ -81,6 +81,7 @@ export const placeOrderCOD = async (req, res) => {
     
     `),
     );
+
 
     const subtotal = amount - userRegion.deliveryFee;
 

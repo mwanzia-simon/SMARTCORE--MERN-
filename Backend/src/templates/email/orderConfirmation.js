@@ -87,7 +87,7 @@ export const orderConfirmationTemplate = ({
                         </td>
                         
                         <td align="right" style="color: #111827; font-size: 14px; font-weight: bold; padding-bottom: 10px;">
-                          #${orderNumber}
+                          ${orderNumber}
                         </td>
                       </tr>
                       
@@ -119,10 +119,9 @@ export const orderConfirmationTemplate = ({
                 Your Order
               </h3>
               
-              <!-- Product 1 -->
             ${productsHTML}
               
-              <!-- Repeat the product block for additional products -->
+            
               
             </td>
           </tr>
