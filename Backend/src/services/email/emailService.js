@@ -7,6 +7,7 @@ import { accountVerificationTemplate } from "../../templates/email/accountVerifi
 import { newsletterSubscriptionTemplate } from "../../templates/email/newsletterSubscription.js";
 import { accountReactivationTemplate } from "../../templates/email/accountReactivation.js";
 import { orderConfirmationTemplate } from "../../templates/email/orderConfirmation.js";
+import { orderDeliveredTemplate } from "../../templates/email/orderDelivered.js";
 
 // sendWelcomeEmail function
 export const sendWelcomeEmail = async ({ user, url }) => {
@@ -115,6 +116,30 @@ export const sendOrderConfirmation = async ({
       orderNumber,
       subtotal,
       total,
+    }),
+  });
+};
+
+// sendOrderDeliveredEmail function
+export const sendOrderDeliveredEmail = async ({
+  user,
+  reviewLink,
+  deliveryAddress,
+  deliveryDate,
+  orderNumber,
+  productsHTML
+}) => {
+  return sendEmail({
+    to: user.email,
+    subject: "Order delivered!",
+    html: orderDeliveredTemplate({
+      name: user.firstName,
+      year: currentYear,
+      deliveryAddress,
+      deliveryDate,
+      orderNumber,
+      productsHTML,
+      reviewUrl,
     }),
   });
 };
