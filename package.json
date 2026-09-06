@@ -5,7 +5,7 @@
   "main": "./Backend/src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install --prefix Backend && npm install --prefix Frontend && npm run build --prefix Frontend",
+    "build": "npm install --prefix Backend && npm install --prefix Frontend --include=dev && npm run build --prefix Frontend",
     "start": "npm run start --prefix Backend"
   },
   "keywords": [],
