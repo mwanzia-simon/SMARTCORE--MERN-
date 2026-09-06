@@ -127,7 +127,7 @@ export const sendOrderDeliveredEmail = async ({
   deliveryAddress,
   deliveryDate,
   orderNumber,
-  productsHTML
+  productsHTML,
 }) => {
   return sendEmail({
     to: user.email,
@@ -139,7 +139,7 @@ export const sendOrderDeliveredEmail = async ({
       deliveryDate,
       orderNumber,
       productsHTML,
-      reviewUrl,
+      reviewLink,
     }),
   });
 };

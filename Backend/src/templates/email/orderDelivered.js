@@ -4,7 +4,7 @@ export const orderDeliveredTemplate = ({
   deliveryDate,
   orderNumber,
   productsHTML,
-  reviewUrl,
+  reviewLink,
   year,
 }) => `
 <!DOCTYPE html>
@@ -108,43 +108,7 @@ export const orderDeliveredTemplate = ({
               
               <!-- Product -->
 
-              ${productsHTML}
-
-              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="
-            border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-          ">
-                <tr>
-                  <td width="90" valign="top">
-                    <img src="{{productImage}}" alt="{{productName}}" width="75" style="
-                    display: block;
-                    border-radius: 8px;
-                    border: 1px solid #e5e7eb;
-                  ">
-                  </td>
-                  
-                  <td valign="top" style="padding-left: 15px;">
-                    <p style="
-                  margin: 0 0 6px;
-                  color: #111827;
-                  font-size: 15px;
-                  font-weight: bold;
-                ">
-                      {{productName}}
-                    </p>
-                    
-                    <p style="
-                  margin: 0;
-                  color: #6b7280;
-                  font-size: 13px;
-                ">
-                      Quantity: {{quantity}}
-                    </p>
-                  </td>
-                </tr>
-              </table>
-              
+              ${productsHTML} 
               <!-- Review Message -->
               <div style="
             background-color: #eff6ff;
@@ -179,7 +143,7 @@ export const orderDeliveredTemplate = ({
               <table cellpadding="0" cellspacing="0" border="0" style="margin: 28px auto 0;">
                 <tr>
                   <td style="border-radius: 6px; background-color: #2563eb;">
-                    <a href="${reviewUrl}" style="
+                    <a href="${reviewLink}" style="
                      display: inline-block;
                      padding: 13px 24px;
                      color: #ffffff;

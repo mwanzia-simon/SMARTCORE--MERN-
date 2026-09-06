@@ -82,10 +82,9 @@ export const placeOrderCOD = async (req, res) => {
     `),
     );
 
-
     const subtotal = amount - userRegion.deliveryFee;
 
-    const deliveryAddress = `${userAddress.firstName} ${userAddress.lastName} ${userAddress.region} ${userAddress.city}`;
+    const deliveryAddress = `${userAddress.firstName} ${userAddress.lastName}, ${userAddress.region}, ${userAddress.city}`;
 
     await emailService.sendOrderConfirmation({
       user,
@@ -159,8 +158,6 @@ export const getUserOrders = async (req, res) => {
   }
 };
 
-// Getting all the orders data for the admin
-// /api/order/admin
 export const getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find({
@@ -194,10 +191,73 @@ export const changeStatus = async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
 
-    // Find the order in the db and change the status
+    const userOrder = await Order.findById(id);
+    const user = await User.findById(userOrder.userID);
+    const userAddress = await Address.findById(userOrder.address);
+
+    const populatedCustomerOrder = await Order.findById(userOrder._id).populate(
+      "items.product",
+    );
+
+    let productsHTML = "";
+
+    const structuredOrder = populatedCustomerOrder.items.map(
+      (item) =>
+        (productsHTML += `
+         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+          ">
+                <tr>
+                  <td width="90" valign="top">
+                    <img src="${item.product.image}" alt="${item.product.name}" width="75" style="
+                    display: block;
+                    border-radius: 8px;
+                    border: 1px solid #e5e7eb;
+                  ">
+                  </td> 
+                  <td valign="top" style="padding-left: 15px;">
+                    <p style="
+                  margin: 0 0 6px;
+                  color: #111827;
+                  font-size: 15px;
+                  font-weight: bold;
+                ">
+                      ${item.product.name}
+                    </p> 
+                    <p style="
+                  margin: 0;
+                  color: #6b7280;
+                  font-size: 13px;
+                ">
+                      Quantity: ${item.quantity}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+      `),
+    );
+
+    const deliveryAddress = `${userAddress.firstName} ${userAddress.lastName}, ${userAddress.region}, ${userAddress.city}`;
+
     await Order.findByIdAndUpdate(id, { status });
 
-    res.json({ success: true, message: "Order status updated succesifully!" });
+    if (status == "Delivered") {
+      await emailService.sendOrderDeliveredEmail({
+        user,
+        reviewLink: `${process.env.CLIENT_URL}`,
+        deliveryDate: formatDate(new Date(Date.now())),
+        orderNumber: userOrder.orderNumber,
+        deliveryAddress,
+        productsHTML,
+      });
+    }
+
+    return res.json({
+      success: true,
+      message: "Order status updated succesifully!",
+    });
   } catch (error) {
     return res.json({ success: false, message: error.message });
   }
