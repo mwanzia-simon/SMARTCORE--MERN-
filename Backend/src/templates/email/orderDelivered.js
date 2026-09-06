@@ -158,7 +158,7 @@ export const orderDeliveredTemplate = ({
                 </tr>
               </table>
               
-              <p style="font-size: 16px; line-height: 1.6; margin: 30px 0 0;">
+              <p style="font-size: 16px; line-height: 1.6; margin: 30px 0 0; text-align:center;">
                 Thank you for shopping with us,<br>
                 <strong>The SmartCore Team</strong>
               </p>
