@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
-import ScrollToTop from "./components/scrollToTop";
+import ScrollToTop from "./components/ScrollToTop";
 import Navbar from "./components/Navbar";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProductCategory from "./pages/ProductCategory";
