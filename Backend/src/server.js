@@ -20,7 +20,7 @@ import connectCloudinary from "./config/cloudinary.js";
 const app = express();
 const PORT = process.env.PORT || 5700;
 
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5175"];
+const allowedOrigins = ["https://smartcorecomputers.onrender.com"];
 app.use(express.json({ limit: "5mb" }));
 app.use(cors({ credentials: true, origin: allowedOrigins }));
 app.use(cookieParser());
