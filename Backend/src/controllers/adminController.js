@@ -58,8 +58,8 @@ export const adminLogout = async (req, res) => {
   try {
     res.clearCookie("adminToken", {
       httpOnly: true,
-      secure: process.env.NODE_ENV == "Production",
-      sameSite: process.env.NODE_ENV == "Production" ? "none" : "strict",
+      secure: process.env.NODE_ENV == "production",
+      sameSite: process.env.NODE_ENV == "production" ? "lax" : "strict",
     });
     res.json({
       success: true,
